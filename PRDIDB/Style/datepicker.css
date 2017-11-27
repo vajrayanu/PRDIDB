@@ -1,0 +1,8 @@
+﻿/* Overide css code กำหนดความกว้างของปฏิทินและอื่นๆ */
+.ui-datepicker{
+	width:250px;
+	
+	font-family:tahoma;
+	font-size:14px;
+	text-align:center;
+}

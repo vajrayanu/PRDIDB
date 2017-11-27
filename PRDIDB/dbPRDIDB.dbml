@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PRDIDB" Class="dbPRDIDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=WS061\DACONSQLEXPRESS;Initial Catalog=PRDIDB;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PRDIDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.area" Member="areas">
+    <Type Name="area">
+      <Column Name="area_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="area_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="plan_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="area_PRD_DATA" Member="PRD_DATAs" ThisKey="area_ID" OtherKey="Area_ID" Type="PRD_DATA" />
+      <Association Name="User_area" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+      <Association Name="plant_area" Member="plant" ThisKey="plan_ID" OtherKey="ID" Type="plant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="nUser_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserType" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="update_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_area" Member="areas" ThisKey="nUser_ID" OtherKey="update_by" Type="area" />
+      <Association Name="User_complex" Member="complexes" ThisKey="nUser_ID" OtherKey="update_by" Type="complex" />
+      <Association Name="User_contractor" Member="contractors" ThisKey="nUser_ID" OtherKey="update_by" Type="contractor" />
+      <Association Name="User_DATA_HISTORY" Member="DATA_HISTORies" ThisKey="nUser_ID" OtherKey="User_ID" Type="DATA_HISTORY" />
+      <Association Name="User_inspector" Member="inspectors" ThisKey="nUser_ID" OtherKey="update_by" Type="inspector" />
+      <Association Name="User_plant" Member="plants" ThisKey="nUser_ID" OtherKey="update_by" Type="plant" />
+      <Association Name="User_prd_type" Member="prd_types" ThisKey="nUser_ID" OtherKey="update_by" Type="prd_type" />
+      <Association Name="User_service_fluid" Member="service_fluids" ThisKey="nUser_ID" OtherKey="update_by" Type="service_fluid" />
+      <Association Name="User_sizing_basi" Member="sizing_basis" ThisKey="nUser_ID" OtherKey="update_by" Type="sizing_basi" />
+      <Association Name="User_unit" Member="units" ThisKey="nUser_ID" OtherKey="update_by" Type="unit" />
+      <Association Name="User_test_PRD_DATA" Member="test_PRD_DATAs" ThisKey="nUser_ID" OtherKey="update_by" Type="test_PRD_DATA" />
+      <Association Name="User_PRD_DATA" Member="PRD_DATAs" ThisKey="nUser_ID" OtherKey="update_by" Type="PRD_DATA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.complex" Member="complexes">
+    <Type Name="complex">
+      <Column Name="complex_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="complex_plant" Member="plants" ThisKey="complex_ID" OtherKey="complex_ID" Type="plant" />
+      <Association Name="User_complex" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.contractor" Member="contractors">
+    <Type Name="contractor">
+      <Column Name="Contractor_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Contractor_Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="contractor_PRD_DATA" Member="PRD_DATAs" ThisKey="Contractor_ID" OtherKey="Manufacturer" Type="PRD_DATA" />
+      <Association Name="User_contractor" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DATA_HISTORY" Member="DATA_HISTORies">
+    <Type Name="DATA_HISTORY">
+      <Column Name="H_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Activity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HData_Value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_DATA_HISTORY" Member="User" ThisKey="User_ID" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inspector" Member="inspectors">
+    <Type Name="inspector">
+      <Column Name="inspector_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="inspector_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="inspector_test_PRD_DATA" Member="test_PRD_DATAs" ThisKey="inspector_ID" OtherKey="Inspector_ID" Type="test_PRD_DATA" />
+      <Association Name="User_inspector" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.plant" Member="plants">
+    <Type Name="plant">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="complex_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="plant_Name" Type="System.String" DbType="NVarChar(600)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Responsible_by" Type="System.String" DbType="NVarChar(600)" CanBeNull="true" />
+      <Association Name="plant_area" Member="areas" ThisKey="ID" OtherKey="plan_ID" Type="area" />
+      <Association Name="complex_plant" Member="complex" ThisKey="complex_ID" OtherKey="complex_ID" Type="complex" IsForeignKey="true" />
+      <Association Name="User_plant" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.prd_type" Member="prd_types">
+    <Type Name="prd_type">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="prd_type" Member="prd_type1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="prd_type_PRD_DATA" Member="PRD_DATAs" ThisKey="Id" OtherKey="PRD_Type_ID" Type="PRD_DATA" />
+      <Association Name="User_prd_type" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service_fluid" Member="service_fluids">
+    <Type Name="service_fluid">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="service_Fluid_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="service_fluid_PRD_DATA" Member="PRD_DATAs" ThisKey="Id" OtherKey="Service_Fluid" Type="PRD_DATA" />
+      <Association Name="User_service_fluid" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sizing_basis" Member="sizing_basis">
+    <Type Name="sizing_basi">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="sizing_basi_PRD_DATA" Member="PRD_DATAs" ThisKey="Id" OtherKey="Sizing_Basis" Type="PRD_DATA" />
+      <Association Name="User_sizing_basi" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.unit" Member="units">
+    <Type Name="unit">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="unit_Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="unit_Type" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_unit" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRD_FILE" Member="PRD_FILEs">
+    <Type Name="PRD_FILE">
+      <Column Name="file_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRD_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="point" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="path_File" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Note_memo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Memo" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="File_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRD_DATA_PRD_FILE" Member="PRD_DATA" ThisKey="PRD_ID" OtherKey="PRD_ID" Type="PRD_DATA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Test_Remark" Member="Test_Remarks">
+    <Type Name="Test_Remark">
+      <Column Name="Remark_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="path_File" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="File_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Test_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="test_PRD_DATA_Test_Remark" Member="test_PRD_DATA" ThisKey="Test_ID" OtherKey="Test_ID" Type="test_PRD_DATA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.test_PRD_DATA" Member="test_PRD_DATAs">
+    <Type Name="test_PRD_DATA">
+      <Column Name="Test_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRD_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Inspector_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="W_O" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Test_Type" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Pop_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Pop_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Leak" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Leak_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="W_O_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Requester" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Shop_Test" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Report_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Reference_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Test_Medium" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Seal_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Pop_Press_Final" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Pop_Press_Final_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Tight_Test_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Tight_Test_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Leak_Final" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Leak_Final_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reseat_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Reseat_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Test_Result" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Re_Test" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Test_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Recommendation_Next_Inspection" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Inspection_Finding" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nozzle_Disc_Size_AsFound" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nozzle_Disc_Size_AsFound_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nozzle_Disc_Size_AfterRepair" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nozzle_Disc_Size_AfterRepair_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Disc_Holder_Size_AsFound" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Disc_Holder_Size_AsFound_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Disc_Holder_Size_AfterRepair" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Disc_Holder_Size_AfterRepair_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Adjust_Bolt_AsFound" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Adjust_Bolt_AsFound_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Adjust_Bolt_AfterRepair" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Adjust_Bolt_AfterRepair_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Spring_Dim_AsFound" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Spring_Dim_AsFound_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remark_Recommend" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body_Cylinder_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Body_Cylinder_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Body_Cylinder_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Bonnet_Cap_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Bonnet_Cap_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Bonnet_Cap_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Nozzle_Base_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Nozzle_Base_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Nozzle_Base_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Dist_Inser_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Dist_Inser_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Dist_Inser_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Dist_Holder_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Dist_Holder_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Dist_Holder_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Giude_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Giude_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Giude_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Spindle_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Spindle_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Spindle_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Sping_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Sping_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Sping_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Bellow_State_Intspection" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Bellow_Operations" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Bellow_Spare_Part" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Recommend" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="test_PRD_DATA_Test_Remark" Member="Test_Remarks" ThisKey="Test_ID" OtherKey="Test_ID" Type="Test_Remark" />
+      <Association Name="inspector_test_PRD_DATA" Member="inspector" ThisKey="Inspector_ID" OtherKey="inspector_ID" Type="inspector" IsForeignKey="true" />
+      <Association Name="User_test_PRD_DATA" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+      <Association Name="PRD_DATA_test_PRD_DATA" Member="PRD_DATA" ThisKey="PRD_ID" OtherKey="PRD_ID" Type="PRD_DATA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRD_DATA" Member="PRD_DATAs">
+    <Type Name="PRD_DATA">
+      <Column Name="PRD_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="PRD_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Serial_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Line_Equip_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Area_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Model_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="P_ID" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PRD_Type_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Valve_Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Service_Fluid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sizing_Basis" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Isolation_Valve" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Set_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cold_Diff_Test_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Registration_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Blow_Off_Temp_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Max_Operating_Temp_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Max_Operating_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Operating_Temp_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Operating_Press_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Capacity_Required_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Capacity_Relieving_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Back_Press_Constant_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Back_Press_Variable_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Orifice_Area_Required_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Orifice_Area_Selected_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Spring_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Spring_Material" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Inspec_Frequency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Body_Bonnet_Material" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Nozzle_Disc_Insert_Mat" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Normainal_Size_Inlet_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Normainal_Size_Outlet_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Condition_For_Mantence" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Type_Colour" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Type_Insulation" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Function_Location" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Crane_Need" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="date_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="update_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Record_By" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Flange_Face_Outlet" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Flange_Face_Inlet" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Capacity_Required" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacity_Relieving" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Orifice_Area_Required" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Orifice_Area_Selected" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Set_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cold_Diff_Test_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Blow_Off_Temp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Max_Operating_Temp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Max_Operating_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Operating_Temp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Operating_Press" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Back_Press_Constant" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Back_Press_Variable" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Normainal_Size_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Normainal_Size_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Press_Rating_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Press_Rating_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Effective_Orifice_Size" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type_Gasket_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type_Gasket_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Material_Gasket_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Material_Gasket_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size_Bolt_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size_Bolt_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Amout_Bolt_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Amout_Bolt_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="High_Scaffolding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size_Gasket_Inlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size_Gasket_Outlet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referance_By" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Built_up_Back_press_constant" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Built_up_Back_press_constant_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Built_up_Back_press_variable" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Built_up_Back_press_variable_Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nextInspection_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRD_DATA_PRD_FILE" Member="PRD_FILEs" ThisKey="PRD_ID" OtherKey="PRD_ID" Type="PRD_FILE" />
+      <Association Name="PRD_DATA_test_PRD_DATA" Member="test_PRD_DATAs" ThisKey="PRD_ID" OtherKey="PRD_ID" Type="test_PRD_DATA" />
+      <Association Name="area_PRD_DATA" Member="area" ThisKey="Area_ID" OtherKey="area_ID" Type="area" IsForeignKey="true" />
+      <Association Name="contractor_PRD_DATA" Member="contractor" ThisKey="Manufacturer" OtherKey="Contractor_ID" Type="contractor" IsForeignKey="true" />
+      <Association Name="prd_type_PRD_DATA" Member="prd_type" ThisKey="PRD_Type_ID" OtherKey="Id" Type="prd_type" IsForeignKey="true" />
+      <Association Name="service_fluid_PRD_DATA" Member="service_fluid1" ThisKey="Service_Fluid" OtherKey="Id" Type="service_fluid" IsForeignKey="true" />
+      <Association Name="sizing_basi_PRD_DATA" Member="sizing_basi" ThisKey="Sizing_Basis" OtherKey="Id" Type="sizing_basi" IsForeignKey="true" />
+      <Association Name="User_PRD_DATA" Member="User" ThisKey="update_by" OtherKey="nUser_ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

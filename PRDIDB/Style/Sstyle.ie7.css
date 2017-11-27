@@ -1,0 +1,137 @@
+
+
+.irpc-header, #irpc-header-bg, .irpc-layout-cell, .irpc-layout-wrapper, .irpc-footer, .irpc-nav, #irpc-hmenu-bg, .irpc-sheet,
+.clearfix {
+   zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).className="cleared");
+}
+
+.irpc-textblock > div {
+   display: block;
+   line-height: normal;
+   zoom: 1;
+}
+
+.irpc-hmenu>li, .irpc-hmenu>li>a
+{
+   display: inline !important;
+   zoom: 1;
+   float: none !important;
+   vertical-align: top;
+}
+ul.irpc-hmenu, ul.irpc-hmenu ul {
+   zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).className="cleared");
+}
+#irpc-hmenu-bg 
+{
+   display: none;
+}
+
+ul.irpc-hmenu>li:first-child {
+   padding-right:1px;
+}
+ul.irpc-hmenu>li{
+   zoom:expression(runtimeStyle.zoom=1,insertBefore(document.createElement('span'),firstChild).className='irpc-hmenu-separator');
+}
+ul.irpc-hmenu>li>span.irpc-hmenu-separator
+{
+   position:absolute;
+   display: block;
+   top:0;
+   left:  -1px;
+   width: 1px;
+   height: 47px;
+   background: url('images/menuseparator.png') center center no-repeat;
+}
+ul.irpc-hmenu>li:first-child>span.irpc-hmenu-separator
+{
+   display:none;
+}
+
+ul.irpc-hmenu ul, .desktop-nav ul.irpc-hmenu>li.ext:hover>a{
+   background-color: rgba(140, 207, 171, 0.9) !important;
+}
+
+.irpc-header
+{
+   z-index: 1;
+   background-image: [headerimage];
+   background-position: [headerposition];
+}
+
+#irpc-header-bg 
+{
+   display: none;
+}
+
+.irpc-content-layout, .irpc-content-layout-row, .irpc-layout-cell 
+{
+   display: block;
+   zoom: 1;
+}
+.irpc-layout-cell
+{
+   position:relative;
+   float: left;
+   clear: right;
+}
+
+ul.irpc-vmenu, ul.irpc-vmenu ul, ul.irpc-vmenu li{
+   zoom: 1;
+}
+
+ul.irpc-vmenu ul 
+{
+   background-color: transparent;
+}
+
+input[type="text"]
+{
+   margin:0 0 0 -3px;
+   zoom:expression(runtimeStyle.zoom = 1, parentNode.insertBefore(document.createElement('div'), this).appendChild(this));
+}
+
+* html input[type="text"]
+{
+   margin :0;
+}
+
+form.irpc-search>input[type="text"]
+{
+   margin:0 0 0 -3px;
+   zoom:expression(runtimeStyle.zoom = 1, parentNode.insertBefore(document.createElement('div'), this).appendChild(this));
+}
+
+form.irpc-search div>input[type="text"]
+{
+   width: 100%;
+}
+
+* html form.irpc-search>input[type="text"] 
+{
+   margin :0;
+}
+
+.irpc-postmetadataheader{
+   zoom:1;
+}
+
+.irpc-postheadericons span{
+   zoom: 1;
+}
+.irpc-postcontent {
+   height: 1%;
+}
+
+.close-alt, .arrow-right-alt, .arrow-left-alt {
+   display: block !important;
+}
+.cw, .ccw {
+   display: none !important;
+}
+
+.irpc-content 
+{
+   width: auto;
+   float:none;
+}
+

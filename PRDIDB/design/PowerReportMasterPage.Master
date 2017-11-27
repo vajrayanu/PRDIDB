@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PowerReportMasterPage.master.cs" Inherits="PRDIDBSystem.design.PowerReportMasterPage" %>
+
+<%@ Register TagName="Header" TagPrefix="art" Src="~/web_Control/PHeader.ascx" %>
+<%@ Register TagName="Footer" TagPrefix="art" Src="~/web_Control/PFooter.ascx" %>
+<%@ Register TagName="ContentBefore" TagPrefix="art" Src="~/web_Control/PContentBefore.ascx" %>
+<%@ Register TagName="ContentAfter" TagPrefix="art" Src="~/web_Control/PContentAfter.ascx" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+   
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width" />
+
+    <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="<%= ResolveUrl("~/Style/Pstyle.css") %>" />
+
+    <!--[if IE 7]><link rel="stylesheet" href="~/Style/Pstyle.ie7.css" type="text/css" media="screen" /><![endif]-->
+    <link rel="stylesheet" type="text/css" href="<%= ResolveUrl("~/Style/Pstyle.responsive.css") %>" />
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin" />
+
+    <link type="text/css" rel="stylesheet" href="<%= ResolveUrl("~/Style/jquery-ui-1.7.2.custom.css") %>" />
+
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/Pjquery.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/Pscript.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/Pscript.responsive.js") %>"></script>
+
+
+     <%-- JQuery --%>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.intellisense.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-ui-1.10.3.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-ui-1.10.3.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color-2.1.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color-2.1.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color.svg-names-2.1.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color.svg-names-2.1.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.unobtrusive-ajax.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.unobtrusive-ajax.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate-vsdoc.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.unobtrusive.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.unobtrusive.min.js") %>"></script>
+
+     <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-1.4.1.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-1.4.1.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-ui-1.7.2.custom.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-ui-datepicker.js") %>"></script>
+
+
+    <asp:ContentPlaceHolder ID="ScriptIncludePlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="HeadItemsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server" style="height: 100%">
+
+
+        <div id="irpc-main">
+            <asp:ContentPlaceHolder ID="MenuContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+            <header class="irpc-header">
+                <asp:ContentPlaceHolder ID="HeaderContentPlaceHolder" runat="server">
+                    <art:Header ID="HeaderContent" runat="server"></art:Header>
+                </asp:ContentPlaceHolder>
+            </header>
+            <div class="irpc-sheet clearfix" style="width:auto">
+                <div class="irpc-layout-wrapper" >
+                    <div class="irpc-content-layout" >
+                        <div class="irpc-content-layout-row">
+                           <%-- <div class="irpc-layout-cell irpc-sidebar1">
+                                <asp:ContentPlaceHolder ID="Sidebar1ContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                            </div>--%>
+                            <div class="irpc-layout-cell irpc-content">
+                                <art:ContentBefore ID="ContentBeforeContent" runat="server"></art:ContentBefore>
+                                <asp:ContentPlaceHolder ID="SheetContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                                <art:ContentAfter ID="ContentAfterContent" runat="server"></art:ContentAfter>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="irpc-footer">
+                    <asp:ContentPlaceHolder ID="FooterContentPlaceHolder" runat="server">
+                        <art:footer id="FooterContent" runat="server"></art:footer>
+                    </asp:ContentPlaceHolder>
+                </footer>
+
+            </div>
+            <p class="irpc-page-footer">
+                <span id="Span1">created by <a href="#" target="_blank">Dacon-Inspection Service</a> </span>
+            </p>
+        </div>
+
+
+
+
+    </form>
+</body>
+</html>

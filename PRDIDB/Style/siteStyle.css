@@ -1,0 +1,116 @@
+﻿/*------ ValidatorCalloutExtender (text box)-------*/
+.validatorCalloutHighlight
+{
+				
+	background-color: lemonchiffon;
+    
+	color: #FF0033;
+}
+.ajax__validatorcallout div, .ajax__validatorcallout td
+{      
+	margin: 0;
+}
+/*------ ValidatorCalloutExtender (Pop box)-------*/
+.validatorPOP
+{
+    
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: black;
+}
+.validatorPOP b
+{
+    
+	color: #BB2222;
+}
+
+
+
+/* table level rules */
+.Grid
+{
+	font-family: verdana,tahoma;
+	font-size: 13px;
+	border: 1px solid #7f7f7f;
+	border-collapse:collapse;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+/* header column rules */
+.Grid th 
+{
+    background:  #507CD1; 
+    border-color: #989898 #cbcbcb #989898 #989898;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium;
+    color: #FFFFFF;
+	padding: 2px 2px 2px 2px;
+    vertical-align: bottom;
+    text-align:center;
+    font-size: 12px;
+	font-weight: bold;
+	height:20px;
+}  
+
+.Grid th a
+{
+	color:#FFFFFF;
+    font-weight: bold;
+	text-decoration: none;
+	display: block;
+    padding-right: 2px;
+}
+
+/* data cell and data row rules */
+.Grid td 
+{
+	color:#333333;
+    padding: 2px 2px 2px 2px;
+    border-bottom: solid 1px #BBD9EE;
+  
+}
+.Grid .altrow
+{
+    background-color: #F2F5ED; 
+} 
+
+.Grid .row
+{
+    background-color: #fff;
+}  
+
+.Grid .rownum
+{
+	width:15px;
+    text-align:right;
+    padding-left:0px;
+    color:#333333;
+    background-color :#E5DBCF;
+}
+
+/* group header */
+.Grid .group span
+{
+	padding:10px 0px 2px 0px;
+	color:#666666;
+	text-align:left;
+	font-size:13px;
+	font-weight:bold;
+	cursor:pointer;
+} 
+.Grid .group img
+{
+	cursor:pointer;
+}
+
+.Grid .txtRed
+{
+	font-family:  Verdana,MS Sans Serif;
+	font-size: 12px;
+	color: #fd0303;
+
+}
+
+
+.HideColumn{display:none}

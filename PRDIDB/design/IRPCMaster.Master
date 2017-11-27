@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="IRPCMaster.master.cs" Inherits="PRDIDBSystem.design.IRPCMaster" %>
+
+<%@ Register TagName="header" TagPrefix="art" Src="~/web_Control/DefaultHeader.ascx" %>
+<%@ Register TagName="Footer" TagPrefix="art" Src="~/web_Control/DefaultFooter.ascx" %>
+<%@ Register TagName="ContentBefore" TagPrefix="art" Src="~/web_Control/DefaultContentBefore.ascx" %>
+<%@ Register TagName="ContentAfter" TagPrefix="art" Src="~/web_Control/DefaultContentAfter.ascx" %>
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width" />
+
+    <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link type="text/css" rel="stylesheet" href="<%= ResolveUrl("~/Style/style.css") %>" media="screen" />
+    <link type="text/css" rel="stylesheet" href="<%= ResolveUrl("~/Style/siteStyle.css") %>"/>
+    <!--[if IE 6]><link rel="stylesheet" href="~/Style/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="~/Style/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+    <link type="text/css" rel="stylesheet" href="<%= ResolveUrl("~/Style/style.responsive.css") %>" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin" />
+
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/script.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/script.responsive.js") %>"></script>
+
+    <%-- JQuery --%>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.intellisense.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-2.0.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-ui-1.10.3.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery-ui-1.10.3.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color-2.1.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color-2.1.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color.svg-names-2.1.2.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.color.svg-names-2.1.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.unobtrusive-ajax.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.unobtrusive-ajax.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate-vsdoc.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.unobtrusive.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/js/jquery.validate.unobtrusive.min.js") %>"></script>
+
+
+
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-1.4.1.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jQuery/jquery-1.4.1.min.js") %>"></script>
+
+    
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+
+    <asp:ContentPlaceHolder ID="ScriptIncludePlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="HeadItemsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body runat="server">
+    <form id="Form1" runat="server" style="height: 100%">
+       
+
+        <div id="irpc-main">
+            <asp:ContentPlaceHolder ID="MenuContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+            <header class="irpc-header">
+                <asp:ContentPlaceHolder ID="HeaderContentPlaceHolder" runat="server">
+                    <art:header ID="HeaderContent" runat="server"></art:header>
+                </asp:ContentPlaceHolder>
+            </header>
+            <div class="irpc-sheet clearfix">
+                <div class="irpc-layout-wrapper">
+                    <div class="irpc-content-layout">
+                        <div class="irpc-content-layout-row">
+                            <div class="irpc-layout-cell irpc-content">
+                                <art:ContentBefore ID="ContentBeforeContent" runat="server"></art:ContentBefore>
+                                <asp:ContentPlaceHolder ID="SheetContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                                <art:ContentAfter ID="ContentAfterContent" runat="server"></art:ContentAfter>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="irpc-footer">
+                    <asp:ContentPlaceHolder ID="FooterContentPlaceHolder" runat="server">
+                        <art:Footer ID="FooterContent" runat="server"></art:Footer>
+                    </asp:ContentPlaceHolder>
+                </footer>
+
+            </div>
+            <p class="irpc-page-footer">
+                <span id="irpc-footnote-links">created by <a href="#" target="_blank">Dacon-Inspection Service</a> </span>
+            </p>
+        </div>
+
+
+
+
+    </form>
+</body>
+</html>

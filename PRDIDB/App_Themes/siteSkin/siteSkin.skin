@@ -1,0 +1,39 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:imagebutton SkinID="Login" runat="server" Imageurl="~/images/button/btn_login1.png" 
+        onmouseover="this.src='images/button/btn_login2.png'" 
+        onmouseout="this.src='images/button/btn_login1.png'" border='0' ImageAlign="AbsMiddle" /> 
+
+<asp:imagebutton SkinID="submit1" runat="server" Imageurl="~/images/button/submit-button01.png" 
+        onmouseover="this.src='../images/button/submit-button02.png'" 
+        onmouseout="this.src='../images/button/submit-button01.png'" border='0' ImageAlign="AbsMiddle" /> 
+
+<asp:imagebutton SkinID="cancel1" runat="server" Imageurl="~/images/button/cancel-button01.png" 
+        onmouseover="this.src='../images/button/cancel-button02.png'" 
+        onmouseout="this.src='../images/button/cancel-button01.png'" border='0' ImageAlign="AbsMiddle" /> 
+
+<asp:imagebutton SkinID="add1" runat="server" Imageurl="~/images/button/Add_new_1.png" 
+        onmouseover="this.src='../images/button/Add_new_2.png'" 
+        onmouseout="this.src='../images/button/Add_new_1.png'" border='0' ImageAlign="AbsMiddle" /> 
+
+<asp:imagebutton SkinID="search1" runat="server" Imageurl="~/images/button/search-button01.png" 
+        onmouseover="this.src='../images/button/search-button02.png'" 
+        onmouseout="this.src='../images/button/search-button01.png'" border='0' ImageAlign="AbsMiddle" /> 
+
+<asp:imagebutton SkinID="Export_to_Excel1" runat="server" Imageurl="~/images/button/button_small_export-excel.gif" 
+        onmouseover="this.src='../images/button/button_small_export-excelx.gif'" 
+        onmouseout="this.src='../images/button/button_small_export-excel.gif'" border='0' ImageAlign="AbsMiddle" /> 
